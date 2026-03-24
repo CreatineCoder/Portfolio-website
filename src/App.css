@@ -1,0 +1,15 @@
+.app-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sections now span full width for backgrounds */
+section:not(.hero) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+}

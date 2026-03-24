@@ -1,0 +1,18 @@
+.projects {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 8rem 2rem;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-header h2 {
+  color: var(--text-color);
+}
+
+.projects-header p {
+  color: var(--text-secondary);
+}

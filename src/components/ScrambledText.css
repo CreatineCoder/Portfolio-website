@@ -1,0 +1,13 @@
+.text-block {
+  max-width: 1000px;
+  font-family: monospace;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  white-space: pre-wrap; /* Preserves spaces and line breaks */
+}
+
+.char {
+  will-change: transform;
+  display: inline-block;
+}
