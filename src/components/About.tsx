@@ -1,13 +1,36 @@
 import './About.css';
-import SkillCard from './SkillCard';
 import TrueFocus from './TrueFocus';
 import ScrambledText from './ScrambledText';
+import LogoLoop from './LogoLoop';
+import { 
+  SiReact, 
+  SiTypescript, 
+  SiNodedotjs, 
+  SiCss, 
+  SiGit, 
+  SiVite, 
+  SiJavascript, 
+  SiTailwindcss,
+  SiHtml5,
+  SiFramer
+} from 'react-icons/si';
 
 const About = () => {
-  const skills = ['React', 'TypeScript', 'Node.js', 'CSS Grid', 'Flexbox', 'Git', 'Vite'];
+  const techLogos = [
+    { node: <SiReact />, title: "React" },
+    { node: <SiTypescript />, title: "TypeScript" },
+    { node: <SiJavascript />, title: "JavaScript" },
+    { node: <SiNodedotjs />, title: "Node.js" },
+    { node: <SiHtml5 />, title: "HTML5" },
+    { node: <SiCss />, title: "CSS3" },
+    { node: <SiTailwindcss />, title: "Tailwind CSS" },
+    { node: <SiGit />, title: "Git" },
+    { node: <SiVite />, title: "Vite" },
+    { node: <SiFramer />, title: "Framer Motion" },
+  ];
 
   return (
-    <section id="about" className="about">
+    <section className="about">
       <div className="about-content">
         <TrueFocus 
           sentence="About Me"
@@ -39,10 +62,16 @@ const About = () => {
         
         <div className="skills-section">
           <h3>My Skills</h3>
-          <div className="skills-grid">
-            {skills.map((skill) => (
-              <SkillCard key={skill} name={skill} />
-            ))}
+          <div className="skills-loop-container">
+            <LogoLoop
+              logos={techLogos}
+              speed={60}
+              direction="left"
+              logoHeight={50}
+              gap={80}
+              scaleOnHover
+              fadeOut
+            />
           </div>
         </div>
       </div>

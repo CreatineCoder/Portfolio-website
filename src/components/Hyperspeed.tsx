@@ -1,5 +1,5 @@
 import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
-import { FC, useEffect, useRef } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import * as THREE from 'three';
 
 import './Hyperspeed.css';
@@ -750,7 +750,7 @@ class Road {
     this.uTime = { value: 0 };
   }
 
-  createPlane(side: number, width: number, isRoad: boolean) {
+  createPlane(side: number, isRoad: boolean) {
     const options = this.options;
     const segments = 100;
     const geometry = new THREE.PlaneGeometry(
@@ -817,9 +817,9 @@ class Road {
   }
 
   init() {
-    this.leftRoadWay = this.createPlane(-1, this.options.roadWidth, true);
-    this.rightRoadWay = this.createPlane(1, this.options.roadWidth, true);
-    this.island = this.createPlane(0, this.options.islandWidth, false);
+    this.leftRoadWay = this.createPlane(-1, true);
+    this.rightRoadWay = this.createPlane(1, true);
+    this.island = this.createPlane(0, false);
   }
 
   update(time: number) {

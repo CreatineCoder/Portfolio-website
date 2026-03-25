@@ -1,7 +1,14 @@
 .projects {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('/images/projects-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
   padding: 8rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
 .projects-container {

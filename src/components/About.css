@@ -1,7 +1,14 @@
 .about {
-  background-color: rgba(5, 5, 5, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 8rem 2rem; /* Vertical and horizontal padding */
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/images/laptop-with-glowing-screen-table-dark-top-view-copy-space.jpg');
+  background-size: cover;
+  background-position: top right;
+  /* background-attachment: fixed; - REMOVED to let it start relative to the div */
+  min-height: calc(100vh - 64px);
+  padding: 4rem 2rem 8rem 2rem; /* Reduced top padding as main already has some */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
 .about-content {
@@ -16,6 +23,25 @@
   margin-bottom: 1.5rem;
 }
 
+.skills-section {
+  margin-top: 4rem;
+}
+
 .skills-section h3 {
   color: var(--text-color);
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.skills-loop-container {
+  padding: 2rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Custom fade color for LogoLoop to match section background */
+.skills-loop-container .logoloop {
+  --logoloop-fadeColor: #050505;
 }
