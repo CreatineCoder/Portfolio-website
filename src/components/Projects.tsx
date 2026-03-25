@@ -52,7 +52,7 @@ const Projects = () => {
         <p>A selection of projects I've built recently.</p>
       </div>
       <div className="projects-menu-wrapper">
-        <InfiniteMenu items={menuItems} scale={1.2} />
+        <InfiniteMenu items={menuItems} scale={1.5} />
       </div>
     </section>
   );
