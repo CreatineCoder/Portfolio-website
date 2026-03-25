@@ -1,25 +1,64 @@
 .projects {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('/images/projects-bg.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('/images/projects-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
-  padding: 8rem 2rem;
+  padding: 4rem 0 0 0; /* Reduced from 6rem to decrease gap from fixed header */
   box-sizing: border-box;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.projects-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.projects-header {
+  padding: 1rem 2rem; /* Reduced vertical padding from 2rem to 1rem */
+  text-align: center;
+  z-index: 5;
 }
 
 .projects-header h2 {
   color: var(--text-color);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .projects-header p {
   color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.projects-menu-wrapper {
+  flex-grow: 1;
+  width: 100%;
+  position: relative;
+  /* This creates the smooth fade effect at the top and bottom */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding-top: 8rem; /* More space for header on mobile */
+  }
+  
+  .projects-header h2 {
+    font-size: 2rem;
+  }
 }
