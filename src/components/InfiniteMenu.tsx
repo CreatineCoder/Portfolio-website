@@ -502,7 +502,7 @@ class ArcballControl {
   public snapDirection = vec3.fromValues(0, 0, -1);
   public snapTargetDirection: vec3 | null = null;
 
-  private pointerPos = vec2.create();
+  public pointerPos = vec2.create();
   private previousPointerPos = vec2.create();
   private _rotationVelocity = 0;
   private _combinedQuat = quat.create();
@@ -526,9 +526,7 @@ class ArcballControl {
       this.isPointerDown = false;
     });
     canvas.addEventListener('pointermove', (e: PointerEvent) => {
-      if (this.isPointerDown) {
-        vec2.set(this.pointerPos, e.clientX, e.clientY);
-      }
+      vec2.set(this.pointerPos, e.clientX, e.clientY);
     });
 
     canvas.style.touchAction = 'none';
@@ -611,7 +609,7 @@ class ArcballControl {
     return { q: out, axis, angle };
   }
 
-  private project(pos: vec2): vec3 {
+  public project(pos: vec2): vec3 {
     const r = 2;
     const w = this.canvas.clientWidth;
     const h = this.canvas.clientHeight;
@@ -654,7 +652,7 @@ interface Camera {
   matrices: {
     view: mat4;
     projection: mat4;
-    inversProjection: mat4;
+    inverseProjection: mat4;
   };
 }
 
@@ -724,7 +722,7 @@ class InfiniteGridMenu {
     matrices: {
       view: mat4.create(),
       projection: mat4.create(),
-      inversProjection: mat4.create()
+      inverseProjection: mat4.create()
     }
   };
 
@@ -914,13 +912,24 @@ class InfiniteGridMenu {
     if (!this.gl) return;
     this.control.update(deltaTime, this.TARGET_FRAME_DURATION);
 
+    const mouseWorldPos = this.control.project(this.control.pointerPos);
     const positions = this.instancePositions.map(p => vec3.transformQuat(vec3.create(), p, this.control.orientation));
     const scale = 0.25;
     const SCALE_INTENSITY = 0.6;
 
     positions.forEach((p, ndx) => {
       const s = (Math.abs(p[2]) / this.SPHERE_RADIUS) * SCALE_INTENSITY + (1 - SCALE_INTENSITY);
-      const finalScale = s * scale;
+      
+      // Breathing effect: subtle scale oscillation
+      const breathing = Math.sin(this._frames * 0.05 + ndx * 0.5) * 0.04 + 1.0;
+      
+      // Hover effect: increase scale when mouse is near
+      const dist = vec3.distance(p, mouseWorldPos);
+      const hover = Math.max(0, 1 - dist / 0.5);
+      const hoverScale = 1.0 + hover * 0.15;
+
+      const finalScale = s * scale * breathing * hoverScale;
+      
       const matrix = mat4.create();
 
       mat4.multiply(matrix, matrix, mat4.fromTranslation(mat4.create(), vec3.negate(vec3.create(), p)));
@@ -1010,7 +1019,7 @@ class InfiniteGridMenu {
       this.camera.near,
       this.camera.far
     );
-    mat4.invert(this.camera.matrices.inversProjection, this.camera.matrices.projection);
+    mat4.invert(this.camera.matrices.inverseProjection, this.camera.matrices.projection);
   }
 
   private onControlUpdate(deltaTime: number): void {

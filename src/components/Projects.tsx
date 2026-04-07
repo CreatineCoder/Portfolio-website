@@ -47,11 +47,11 @@ const Projects = () => {
 
   return (
     <section className="projects">
-      <div className="projects-header">
-        <h2>Featured Work</h2>
-        <p>A selection of projects I've built recently.</p>
-      </div>
-      <div className="projects-menu-wrapper">
+      <div className="projects-container">
+        <div className="projects-header">
+          <h2>Featured Work</h2>
+          <p>A selection of projects I've built recently.</p>
+        </div>
         <InfiniteMenu items={menuItems} scale={1.5} />
       </div>
     </section>
