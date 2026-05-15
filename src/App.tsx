@@ -15,11 +15,11 @@ function AppInner() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { pathname } = useLocation();
   const isContact = pathname === '/contact';
-  const isProjects = pathname === '/projects';
+  const useProjectsHeader = pathname === '/projects' || pathname === '/about';
 
   const renderHeader = () => {
     if (isContact) return <ContactHeader />;
-    if (isProjects) return <ProjectsHeader />;
+    if (useProjectsHeader) return <ProjectsHeader />;
     return <Header isDarkMode={isDarkMode} toggleTheme={() => setIsDarkMode(d => !d)} />;
   };
 
