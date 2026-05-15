@@ -775,7 +775,8 @@ class InfiniteGridMenu {
   private init(onInit?: InitCallback): void {
     const gl = this.canvas.getContext('webgl2', {
       antialias: true,
-      alpha: false
+      alpha: true,
+      premultipliedAlpha: false
     });
     if (!gl) {
       throw new Error('No WebGL 2 context!');
@@ -1126,15 +1127,6 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
     };
   }, [items, scale]);
 
-  const handleButtonClick = () => {
-    if (!activeItem?.link) return;
-    if (activeItem.link.startsWith('http')) {
-      window.open(activeItem.link, '_blank');
-    } else {
-      console.log('Internal route:', activeItem.link);
-    }
-  };
-
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <canvas id="infinite-grid-menu-canvas" ref={canvasRef} />
@@ -1145,9 +1137,9 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
 
           <p className={`face-description ${isMoving ? 'inactive' : 'active'}`}>{activeItem.description}</p>
 
-          <div onClick={handleButtonClick} className={`action-button ${isMoving ? 'inactive' : 'active'}`}>
-            <p className="action-button-icon">&#x2197;</p>
-          </div>
+          <p className={`menu-hint ${isMoving ? 'inactive' : 'active'}`}>
+            Drag to explore &middot; centered sphere shows project details
+          </p>
         </>
       )}
     </div>

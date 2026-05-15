@@ -1,6 +1,6 @@
 .about {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/images/laptop-with-glowing-screen-table-dark-top-view-copy-space.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/images/markus-spiske-iar-afB0QQw-unsplash.jpg');
   background-size: cover;
   background-position: top right;
   /* background-attachment: fixed; - REMOVED to let it start relative to the div */

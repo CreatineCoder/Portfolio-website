@@ -1,6 +1,6 @@
 .projects {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('/images/projects-bg.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('/images/markus-spiske-iar-afB0QQw-unsplash.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -34,13 +34,13 @@
 
 .projects-header {
   position: absolute;
-  top: 0;
+  top: 4.5rem;
   left: 0;
   width: 100%;
-  padding: 4rem 2rem 0 2rem; /* Added top padding to clear fixed site header */
+  padding: 0 2rem;
   text-align: center;
-  z-index: 20; /* Ensure it stays on top of InfiniteMenu */
-  pointer-events: none; /* Let clicks pass through to menu unless clicking specific text (if needed) */
+  z-index: 20;
+  pointer-events: none;
 }
 
 .projects-header h2,
@@ -49,18 +49,25 @@
 }
 
 .projects-header h2 {
-  color: var(--text-color);
-  font-size: 3rem;
+  color: #ffffff;
+  font-size: 2.4rem;
   font-weight: 800;
-  margin-bottom: 0.2rem;
+  margin: 0 0 0.1rem 0;
   text-transform: uppercase;
   letter-spacing: 2px;
+  text-shadow:
+    0 0 24px rgba(167, 239, 158, 0.45),
+    0 0 60px rgba(167, 239, 158, 0.2),
+    0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .projects-header p {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem; /* Added small margin below the text */
+  color: #A7EF9E;
+  font-size: 0.95rem;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 14px rgba(167, 239, 158, 0.4), 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 @media (max-width: 768px) {

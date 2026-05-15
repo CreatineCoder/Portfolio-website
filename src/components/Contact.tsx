@@ -1,14 +1,42 @@
-import { useState } from 'react';
+import { memo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { FiGithub, FiLinkedin, FiMail, FiSend, FiTwitter } from 'react-icons/fi';
-import LetterGlitch from './LetterGlitch';
+import FaultyTerminal from './FaultyTerminal';
+import Crosshair from './Crosshair';
 import './Contact.css';
+
+const GRID_MUL: [number, number] = [2, 1];
+
+const ContactBackground = memo(() => (
+  <div className="contact-bg">
+    <FaultyTerminal
+      scale={1.5}
+      gridMul={GRID_MUL}
+      digitSize={1.2}
+      timeScale={0.5}
+      pause={false}
+      scanlineIntensity={0.5}
+      glitchAmount={1}
+      flickerAmount={1}
+      noiseAmp={1}
+      chromaticAberration={0}
+      dither={0}
+      curvature={0.1}
+      tint="#A7EF9E"
+      mouseReact
+      mouseStrength={0.5}
+      pageLoadAnimation
+      brightness={0.6}
+    />
+  </div>
+));
 
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -21,13 +49,9 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact">
-      <LetterGlitch
-        glitchSpeed={60}
-        centerVignette={false}
-        outerVignette={true}
-        smooth={true}
-      />
+    <section className="contact" ref={sectionRef}>
+      <ContactBackground />
+      <Crosshair containerRef={sectionRef} color="#A7EF9E" />
 
       <div className="contact-container">
         {/* Left panel */}
